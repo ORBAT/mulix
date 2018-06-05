@@ -11,7 +11,11 @@ defmodule Mulix.MixProject do
 
       # Docs
       name: "mulix",
-      docs: [main: "Mulix"]
+      docs: [main: "Mulix"],
+      dialyzer: [
+        flags: [:unmatched_returns, :error_handling, :underspecs],
+        ignore_warnings: "dialyzer.ignore-warnings"
+      ]
     ]
   end
 
@@ -27,7 +31,13 @@ defmodule Mulix.MixProject do
     [
       {:ex_doc, "~> 0.16", only: :dev, runtime: false},
       {:witchcraft, "~> 1.0"},
-      {:algae, "~> 1.1"}
+      {:algae, "~> 1.1"},
+      {:dialyxir, "~> 0.5", only: [:dev], runtime: false},
+      {:credo, "~> 0.9.1", only: [:dev, :test], runtime: false},
+      {:mex, "~> 0.0.5", only: :dev},
+      {:bitmap, "~> 1.0"},
+      {:memoize, "~> 1.2"},
+      {:libring, "~> 1.0"}
     ]
   end
 end
